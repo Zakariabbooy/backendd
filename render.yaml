@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: padel-backend
+    env: node
+    branch: main
+    region: oregon
+    root: Back
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BASE_URL
+        value: https://padel-backend.onrender.com
+
+# IMPORTANT:
+# - Do NOT put `MONGODB_URI` here. Add it as a secret in the Render dashboard.
+# - Render will use `process.env.PORT` automatically; `index.js` already respects `process.env.PORT`.
+# - After pushing this file to GitHub, you can create a new Render service and
+#   check the "Use render.yaml" option to import these settings automatically.
